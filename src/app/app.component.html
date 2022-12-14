@@ -1,0 +1,29 @@
+<ion-app>
+  <ion-menu type="reveal" side="end" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-item>
+          <ion-title>Menu</ion-title>
+          <ion-avatar *ngIf="islogin">
+            <ion-img [src]="['./../assets/img/avatar-'+1+'.png']"></ion-img>
+          </ion-avatar>
+          <ion-avatar *ngIf="!islogin">
+            <ion-img [src]="['./../assets/img/profile.jpg']"></ion-img>
+          </ion-avatar>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="menuClose()" [routerLink]="['/home']">Inicio</ion-item>
+        <ion-item *ngIf="islogin" (click)="menuClose()" [routerLink]="['/detail-user',my_id]">Perfil</ion-item>
+        <ion-item *ngIf="islogin" (click)="menuClose()" [routerLink]="['/list-user/']">Usuarios</ion-item>
+        <ion-item *ngIf="islogin" (click)="menuClose()" [routerLink]="['/list-contact/']">Lista de pruductos</ion-item>
+        <ion-item *ngIf="!islogin" side="bottom" (click)="logIn()" routerLink>Iniciar Sesion</ion-item>
+        <ion-item *ngIf="islogin" side="bottom" (click)="logOut()" routerLink>Cerrar Sesion</ion-item>
+      </ion-list>
+    </ion-content> 
+  </ion-menu> 
+  
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

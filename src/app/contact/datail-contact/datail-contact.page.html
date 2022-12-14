@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+   
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Contacto</ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="contact">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>{{contact.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-label><h2>Telefono: {{contact.phone}}</h2></ion-label>
+      <ion-label><h2>Relacion: {{contact.relationship}}</h2></ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

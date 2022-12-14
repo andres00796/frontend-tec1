@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>edit-contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="contact">
+  <form #f="ngForm" novalidate (ngSubmit)="onUpdate()">
+    <ion-grid>
+      <ion-row >
+        <ion-col></ion-col>
+        <ion-col size="auto">
+          <ion-card size="4">
+            <ion-card-header>
+              <ion-card-subtitle></ion-card-subtitle>
+              <ion-card-title>Contacto</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+             
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input name="name" id="name"  [(ngModel)]="contact.name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating" >Phone</ion-label>
+                <ion-input name="phone" id="phone"  [(ngModel)]="contact.phone"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating" >Relacion</ion-label>
+                <ion-input name="relationship" id="relationship"  [(ngModel)]="contact.relationship"></ion-input>
+              </ion-item>
+              <ion-button type="submit" expand="block">Editar</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  </form>
+</ion-content>

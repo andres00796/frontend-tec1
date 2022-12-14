@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title >Producto {{id}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-card fullscreen>
+    <ion-slides pager="true" (ionSlideDidChange)="slideChange($event)">
+      <ion-slide *ngFor="let src of listSrcImages">
+        <img src="{{src}}" side="center" />
+      </ion-slide>
+    </ion-slides>
+    <ion-card-header>
+      <ion-button size="large">
+        <label>Agregar a carrito</label>
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+      <ion-card-title>Nombre</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h2>Precio:$</h2>
+      <h2>Estado:</h2>
+      <h2>Disponibilidad:  </h2>
+    </ion-card-content>
+  </ion-card>
+  <div class="acciones">
+    <ion-button size="large" slot="start" (click)="share()">
+      <ion-icon name="share-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button size="large" *ngIf="permission" slot="start" >
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button size="large">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-button>
+    <ion-button size="large" *ngIf="permission" slot="end">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+
+    <ion-button expand="block" size="large" slot="end" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+      <label>Volver</label>
+    </ion-button>
+  </div>
+
+
+</ion-content>

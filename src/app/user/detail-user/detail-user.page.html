@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start">sdf</ion-back-button>
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Contactos de {{user.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+
+
+<ion-list >
+  <ion-list-header >
+    <ion-label></ion-label>
+  </ion-list-header>
+  <ion-item-sliding *ngFor="let contact of user.contact" >
+  <ion-item  [routerLink]="['/datail-contact/',contact.id_contact]">
+    <ion-label>
+      <h2>{{contact.name}}</h2>
+      <h3>Tel.{{contact.phone}}</h3>
+      <p>Relacion:{{contact.relationship}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-item-options side="end">
+    <ion-item-option color="success"  [routerLink]="['/edit-contact/',contact.id_contact]">Editar</ion-item-option>
+    <ion-item-option  [routerLink]="['/datail-contact/',contact.id_contact]">Detalle</ion-item-option>
+    <ion-item-option color="danger" (click)="deleteContact(contact.id_contact,contact.name)">Eliminar</ion-item-option>
+  </ion-item-options>
+  
+  </ion-item-sliding>
+</ion-list>
+
+
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon (click)="addContact()" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

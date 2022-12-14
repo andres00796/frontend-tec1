@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>new-contact</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" novalidate (ngSubmit)="addContact()">
+    <ion-grid>
+      <ion-row >
+        <ion-col></ion-col>
+        <ion-col size="auto">
+          <ion-card size="4">
+            <ion-card-header>
+              <ion-card-subtitle></ion-card-subtitle>
+              <ion-card-title>Nuevo contacto</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+             
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input name="name" id="name" autocomplete="off" [(ngModel)]="name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating" >Telefono</ion-label>
+                <ion-input name="phone" id="phone" autocomplete="off" [(ngModel)]="phone"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating" >Relacion</ion-label>
+                <ion-input name="relationship" id="relationship" autocomplete="off" [(ngModel)]="relationship"></ion-input>
+              </ion-item>
+              <ion-button type="submit" expand="block">Agregar</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  </form>
+</ion-content>
