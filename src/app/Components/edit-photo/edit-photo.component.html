@@ -1,3 +1,29 @@
-<p>
-  edit-photo works!
-</p>
+<div class="contenedor-principal">
+  <div *ngIf="!corteAplicado; else divCortar">
+      <image-cropper 
+          [imageChangedEvent]="imageChangedEvent"        
+          [imageBase64]="getImageBase64String()" 
+          [maintainAspectRatio]="true" 
+          [aspectRatio]="1/1" 
+          format="jpeg"  
+          [imageQuality]=100
+          [canvasRotation]="canvasRotation"
+          [transform]="transform"      
+          (imageCropped)="imageCropped($event)" 
+          (cropperReady)="cropperReady()" 
+          (loadImageFailed)="loadImageFailed()">
+      </image-cropper>
+  
+      <button (click)="rotateRight()" class="botonIzquierda boton">Girar</button>
+      <button (click)="corteFinalizado()"  class="botonCentro boton">Aplicar corte</button>
+      <button (click)="irAtras()"  class="botonDerecha boton">Volver</button>
+  </div>
+  
+  <ng-template #divCortar>
+      <img [src]="imagenRecortadaLista" id="imagenCortada" class="imagenPrevia" />
+      <button (click)="volverACortar()" class="botonDerecha boton">Volver</button>
+      <button (click)="guardarImagenEnServer(imagenRecortadaLista)"  class="botonCentro boton">Guardar imagen</button>
+      <!-- <button (click)="verTamanoRealImagen()" >ver info</button> -->
+  </ng-template>
+</div>
+

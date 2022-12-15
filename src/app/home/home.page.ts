@@ -39,6 +39,9 @@ export class HomePage {
   listProducts: Product[] = [];
   //paramsSearch: IParaBusquedaAvanzadaProductos;
 
+
+  //baseUrlImages: string = 'http:\\localhost:3030\files\images\' ;
+  rute:string='../../../';
   constructor(
     public navCtrl: NavController,
     private token_service: TokenService,

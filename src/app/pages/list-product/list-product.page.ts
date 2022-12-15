@@ -34,7 +34,8 @@ export class ListProductPage implements OnInit {
   public results:Product[] ;
 
   permissionAdmin:string=localStorage['rolUser']
-
+  //http://localhost:2000/api
+  public readonly baseUrlImages: string = 'http://localhost:2000/api' + '/files/' ;
 
   constructor(
     private router:Router,
