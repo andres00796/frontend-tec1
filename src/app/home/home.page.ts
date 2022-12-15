@@ -4,6 +4,7 @@ import { TokenService } from '../services/token.service';
 import { Product } from 'src/app/models/product';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -14,39 +15,39 @@ export class HomePage {
 
   nameUser:string="";
   items:string[]=['auto','reloj','computadora']
-  products: Product[]=[
-    {id_product:0, nameProduct:'iPhone XS Max',stock:10,price:700,state:1},
-    {id_product:1,nameProduct:'Samsung S22 Ultra',stock:15,price:350,state:1},
-    {id_product:2,nameProduct:'Laptop Asus',stock:9,price:1700,state:1},
-    {id_product:3,nameProduct:'Sony 55 in.',stock:7,price:460,state:1},
-    {id_product:4,nameProduct:'Case Iphone 12',stock:124,price:10,state:1},
-    {id_product:5,nameProduct:'iPhone XS Max',stock:10,price:700,state:1},
-    {id_product:6,nameProduct:'Samsung S22 Ultra',stock:15,price:350,state:1},
-    {id_product:7,nameProduct:'Laptop Asus',stock:9,price:1700,state:1},
-    {id_product:8,nameProduct:'Sony 55 in.',stock:7,price:460,state:1},
-    {id_product:9,nameProduct:'Case Iphone 12',stock:124,price:10,state:1},
-    {id_product:10,nameProduct:'iPhone XS Max',stock:10,price:700,state:1},
-    {id_product:11,nameProduct:'Samsung S22 Ultra',stock:15,price:350,state:1},
-    {id_product:12,nameProduct:'Laptop Asus',stock:9,price:1700,state:1},
-    {id_product:13,nameProduct:'Sony 55 in.', stock:7, price:460, state:1},
-    {id_product:14,nameProduct:'Case Iphone 12', stock:124, price:10, state:1},
-    {id_product:15,nameProduct:'iPhone XS Max', stock:10, price:700, state:1},
-    {id_product:16,nameProduct:'Samsung S22 Ultra', stock:15,price:350, state:1},
-    {id_product:17,nameProduct:'Laptop Asus', stock:9, price:1700, state:1},
-    {id_product:18,nameProduct:'Sony 55 in.', stock:7, price:460, state:1},
-    {id_product:19,nameProduct:'Case Iphone 12', stock:124, price:10, state:1},
-  ]
+ 
+  productos: Product[];
   dolar: number = 6.96;
+  list_empty=undefined;
+  
 
-  //nameProduct: string, stock: number, price: number, state: number
+  options: boolean = false;
+  category: string;
+  condition: string;
+  office: string;
+  selectPositionCategory: number;
+  selectPositionState: number;
+  selectPositionOffice: number;
+
+  valueParametro: string = "";
+  valueCategory: string;
+  valueCondition: string;
+  valueOffice: string;
+  //officeList: ISucursalSimple[];
+  msg: number;
+  data: any[] = Array(2);
+  listProducts: Product[] = [];
+  //paramsSearch: IParaBusquedaAvanzadaProductos;
 
   constructor(
     public navCtrl: NavController,
     private token_service: TokenService,
-    private router:Router
+    private router:Router,
+    private productService:ProductService
   ) { }
 
   ngOnInit(): void {
+    this.getListProduct();
     this.nameUser=this.token_service.getNameUser();
   }
 
@@ -57,5 +58,21 @@ export class HomePage {
     this.router.navigate(['/detail-product'])
 
   }
+
+  getListProduct():void{
+    
+      this.productService.lista().subscribe(
+        data => {
+          console.log(data);
+          this.productos = data;
+          this.list_empty = undefined;
+        },
+        err => {
+          this.list_empty = err.error.message;
+        }
+      );
+    
+  }
+
 
 }

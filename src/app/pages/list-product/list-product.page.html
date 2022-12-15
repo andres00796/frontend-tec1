@@ -1,0 +1,45 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-title>Productos</ion-title>
+
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-menu-button  autoHide="false"></ion-menu-button>
+  
+    </ion-buttons>
+   </ion-toolbar>
+   <ion-toolbar>
+    <ion-item>
+    
+      <ion-searchbar [debounce]="1000" (ionChange)="handleChange($event)" [(ngModel)]="value"></ion-searchbar>
+
+    </ion-item>
+  </ion-toolbar>
+ </ion-header>
+<ion-content>
+<ion-list >
+  <ion-list-header >
+    <ion-label><h1>Productos</h1></ion-label>
+  </ion-list-header>
+  <ion-item-sliding *ngFor="let product of filterProduct" >
+  <ion-item  (click)="seeProduct(product.idProduct)">
+    <ion-label>
+      <h2>{{product.nameProduct}}</h2>
+      <h3>Precio: {{product.price}}</h3>
+      <p>Cantidad: {{product.stock}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-item-options *ngIf="permissionAdmin=='admin'" side="end">
+    <ion-item-option color="danger" (click)="deleteProduct(product.idProduct)" >Eliminar</ion-item-option>
+
+    <!-- (click)="delete(contact.id_contact,contact.name)" -->
+  </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button>
+    <ion-icon (click)="addProduct()" name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Nuevo Producto</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" novalidate (ngSubmit)="updateProduct()">
+    <ion-grid>
+      <ion-row >
+        <ion-col></ion-col>
+        <ion-col size="auto">
+          <ion-card size="4">
+            <ion-card-header>
+              <ion-card-subtitle></ion-card-subtitle>
+              <ion-card-title>Nuevo Producto</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+             
+              <ion-item>
+                <ion-label position="floating">Nombre:</ion-label>
+                <ion-input name="name" id="name" autocomplete="off" [(ngModel)]="nameProduct"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating" >Precio:</ion-label>
+                <ion-input name="phone" id="phone" autocomplete="off" [(ngModel)]="price"></ion-input>
+              </ion-item>
+         
+              <ion-item (click)="selectCoint()">
+                <ion-label *ngIf="coint=='1'">Cambiar a Bolivanos</ion-label>
+                <ion-label *ngIf="coint=='0'">Cambiar a Dolar</ion-label>
+                
+                <p *ngIf="coint=='1'"> Bs. </p>
+                <p *ngIf="coint=='0'"> $.</p>
+              </ion-item>
+              
+              
+              <ion-item>
+                <ion-label position="floating" >Cantidad de items:</ion-label>
+                <ion-input type="number" name="relationship" id="relationship" autocomplete="off" [(ngModel)]="stock"></ion-input>
+              </ion-item>
+              <ion-button type="submit" expand="block">Agregar</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  </form>
+</ion-content>

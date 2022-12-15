@@ -7,16 +7,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="user">
-  <ion-card>
+<ion-content *ngIf="users">
+
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title>{{users.name}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-label><h2>Nombre de ususario: {{users.name}}</h2></ion-label>
+        <ion-label><h2>Nombres: {{users.firstName}}</h2></ion-label>
+        <ion-label><h2>Apellidos: {{users.lastName}}</h2></ion-label>
+      </ion-card-content>
+    </ion-card>
+
+  <!-- <ion-card>
     <ion-card-header>
       <ion-card-subtitle></ion-card-subtitle>
       <ion-card-title>Contactos de {{user.name}}</ion-card-title>
     </ion-card-header>
   
-    <ion-card-content>
+    <ion-card-content> -->
 
-
+<!-- 
 <ion-list >
   <ion-list-header >
     <ion-label></ion-label>
@@ -45,5 +60,5 @@
     <ion-fab-button>
       <ion-icon (click)="addContact()" name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
 </ion-content>

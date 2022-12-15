@@ -1,0 +1,31 @@
+
+<div class="contenedor-principal">
+  
+  <button class="botonIzquierda boton" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Sig Cam</button>
+  <button class="botonCentro boton" (click)="triggerSnapshot();">Tomar foto</button>     
+<button class="botonDerecha boton" (click)="irAtras()">Volver</button>
+
+<div style="text-align:center">
+  
+    <div class="contenedor-camara">
+     
+      <!-- <webcam [height]="600" [width]="800" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+        *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+        [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
+        (initError)="handleInitError($event)"></webcam> -->
+
+        <webcam class="camara" [width]="411" [height]="823" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+        *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+        [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
+        (initError)="handleInitError($event)"></webcam>
+
+    </div>    
+  
+</div>
+
+<h4 *ngIf="errors.length > 0">Mensajes:</h4>
+<ul *ngFor="let error of errors">
+  <li>{{error | json}}</li>
+</ul>
+
+</div>

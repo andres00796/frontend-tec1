@@ -1,0 +1,37 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-title>Mi carrito</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-menu-button  autoHide="false"></ion-menu-button>
+    </ion-buttons>
+   </ion-toolbar>
+ </ion-header>
+<ion-content>
+<ion-list >
+  <ion-list-header >
+    <ion-label><h1>Productos</h1></ion-label>
+  </ion-list-header>
+  <ion-item-sliding *ngFor="let product of productCart" >
+  <ion-item >
+    <ion-label>
+      <h2>{{product.nameProduct}}</h2>
+      <h3>Precio: {{product.price}} $ / {{totalPrice*6.96}} Bs.</h3>
+     
+    </ion-label>
+  </ion-item>
+  <ion-item-options  side="end">
+    <ion-item-option color="danger" (click)="deleteProductCart(product.idProduct)" >Eliminar</ion-item-option>
+
+  </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+<ion-item>
+  <ion-label>
+Total: {{totalPrice}}$ / {{totalPrice*6.96}} Bs. 
+  </ion-label>
+</ion-item>
+<ion-button expand="block" (click)="sendReserve()">
+  <ion-label>Reservar</ion-label>
+</ion-button>
+</ion-content>

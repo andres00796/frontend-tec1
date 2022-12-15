@@ -50,10 +50,31 @@ const routes: Routes = [
   {
     path: 'detail-product',
     loadChildren: () => import('./pages/detail-product/detail-product.module').then( m => m.DetailProductPageModule)
-  },  {
+  },
+  {
     path: 'register-product',
     loadChildren: () => import('./pages/register-product/register-product.module').then( m => m.RegisterProductPageModule)
   },
+  {
+    path: 'list-product',
+    loadChildren: () => import('./pages/list-product/list-product.module').then( m => m.ListProductPageModule)
+  },
+  {
+    path: 'home-login',
+    loadChildren: () => import('./pages/home-login/home-login.module').then( m => m.HomeLoginPageModule)
+  },
+  {
+    path: 'update-product',
+    loadChildren: () => import('./pages/update-product/update-product.module').then( m => m.UpdateProductPageModule)
+  },  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'report',
+    loadChildren: () => import('./pages/report/report.module').then( m => m.ReportPageModule)
+  },
+
 
 
 

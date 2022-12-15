@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button  autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Reclamos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+  <div *ngIf="permissionAdmin=='admin'">
+    <ion-item *ngFor="let report of reports">
+      
+      <ion-label>{{report.title}}</ion-label>
+  <br>
+      <ion-textarea><p>{{report.description}}</p></ion-textarea>
+    
+  </ion-item>
+  </div>
+  <div *ngIf="permissionAdmin!='admin'">
+  <form #f="ngForm" novalidate (ngSubmit)="addReport()">
+        <ion-col size="auto">
+          <ion-card size="6">
+            <ion-card-header>
+              <ion-card-subtitle></ion-card-subtitle>
+              <ion-card-title>Nuevo Reporte</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Titulo:</ion-label>
+                <ion-input name="name" id="name" autocomplete="off" [(ngModel)]="title"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-textarea placeholder="Escriba su reclamo aqui ." [autoGrow]="true"
+                  value="" id="description" name="description" [(ngModel)]="description">
+                </ion-textarea>
+              </ion-item>
+              <ion-button type="submit" expand="block">Enviar comentario</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+  </form>
+</div>
+</ion-content>

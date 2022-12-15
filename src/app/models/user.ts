@@ -3,11 +3,18 @@ import { Contact } from "./contact";
 export class User {
     id_user?: number;
     name: string;
-    contact:Contact[];
+    firstName: string;
+    lastName:string;
     
+    state:number;
+    idRol:number
 
-    constructor( name: string, contact: Contact[]) {
+    constructor( name: string, firstName: string, lastName:string,state:number,idRol:number, ) {
         this.name = name;
-        this.contact=contact;
+        this.firstName = firstName;
+        this.lastName=lastName;
+      
+        this.state=state;
+        this.idRol=idRol;
     }
 }

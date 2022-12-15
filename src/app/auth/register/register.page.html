@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+  <form #f="ngForm" novalidate (ngSubmit)="onRegister()" autocomplete="off">
     <ion-grid>
       <ion-row >
         <ion-col></ion-col>
@@ -17,22 +17,34 @@
           <ion-card size="4">
             <ion-card-header>
               <ion-card-subtitle></ion-card-subtitle>
-              <ion-card-title>Nuevo contacto</ion-card-title>
+              <ion-card-title>Registrar usuario</ion-card-title>
             </ion-card-header>
           
             <ion-card-content>
              
               <ion-item>
-                <ion-label position="floating">Nombre</ion-label>
-                <ion-input name="name" id="name" autocomplete [(ngModel)]="name"></ion-input>
+                <ion-label position="floating">Nombre de usuario:</ion-label>
+                <ion-input name="nameUser" id="nameUser" [(ngModel)]="nameUser"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Nombres:</ion-label>
+                <ion-input name="firstName" id="firstName" [(ngModel)]="firstName"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Apellidos:</ion-label>
+                <ion-input name="lastName" id="lastName" autocomplete [(ngModel)]="lastName"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="permissionAdmin">
+                <ion-label position="floating">Tipo de Usuario:</ion-label>
+                <ion-input name="rol" id="rol" autocomplete [(ngModel)]="rol"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating" >Password</ion-label>
-                <ion-input type="password" name="password" id="password" autocomplete="off" [(ngModel)]="password"></ion-input>
+                <ion-input type="password" name="password1" id="password1"  [(ngModel)]="password"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating" >Confirmar Password</ion-label>
-                <ion-input type="password" name="repassword" id="repassword" autocomplete="off" [(ngModel)]="re_password"></ion-input>
+                <ion-input type="password" name="repassword2" id="repassword2" autocomplete="off" [(ngModel)]="re_password"></ion-input>
               </ion-item>
               <ion-button type="submit" expand="block">Agregar</ion-button>
             </ion-card-content>

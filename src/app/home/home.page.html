@@ -1,10 +1,13 @@
 <ion-header >
   <ion-toolbar >
-    <ion-title>Home</ion-title>
+    <ion-title>Inicio</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button autoHide="true"></ion-menu-button>
     </ion-buttons>
+   
    </ion-toolbar>
+
+   
  </ion-header>
 <ion-content >
   <div *ngIf="false" id="container">
@@ -29,7 +32,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let item of products" (click)="seeProduct(item.id_product)">
+        <ion-item *ngFor="let item of productos" (click)="seeProduct(item.idProduct)">
           <ion-thumbnail slot="start">
             <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
           </ion-thumbnail>

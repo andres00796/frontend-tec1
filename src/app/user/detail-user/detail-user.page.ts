@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class DetailUserPage implements OnInit {
 
   user?: User ;
-  contact: Contact[]=[];
+  users: User;
   is_admin:boolean=false;
   list_empty=undefined;
   is_logged?:boolean;
@@ -32,21 +32,37 @@ export class DetailUserPage implements OnInit {
 
   ngOnInit() {
     this.listUser();
+    this.myProfile();
     this.token_service.isLogged() ? this.is_logged=true :this.is_logged=false;
   }
 
+  myProfile():void{
+    console.log("entro a perfil")
+    const value_id = localStorage['id_new_contact'] = this.activatedRoute.snapshot.params['id'];
+    this.userService.listById(this.activatedRoute.snapshot.params['id']).subscribe(data => {
+      this.users = data;
+      console.log(this.users);
+      console.log("solicita a perfil")
+    },
+    err =>{
+      this.list_empty=err.error.message;
+    })
+    
+    
+
+  }
   listUser(): void {
-    const value_id=localStorage['id_new_contact']=this.activatedRoute.snapshot.params['id'];
-     console.log(value_id);
-    this.userService.listById(value_id).subscribe(
-        data => {
-        this.user = data;
-        this.list_empty = undefined;
-      },
-      err => {
-        this.list_empty = err.error.message;
-      }
-    );
+    // const value_id = localStorage['id_new_contact']=this.activatedRoute.snapshot.params['id'];
+    //  //console.log(value_id);
+    // this.userService.listById(value_id).subscribe(
+    //     data => {
+    //     this.user = data;
+    //     this.list_empty = undefined;
+    //   },
+    //   err => {
+    //     this.list_empty = err.error.message;
+    //   }
+    // );
   }
   
   deleteContact(id?:number, name?:string):void {

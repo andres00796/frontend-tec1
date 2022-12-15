@@ -14,4 +14,5 @@ export class VariableService {
     filter(filterBy:string){
       this._listeners.next(filterBy);
     }
+    
 }

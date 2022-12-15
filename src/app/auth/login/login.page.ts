@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 //import { ToastrService } from 'ngx-toastr';
 //import { ToastrService } from 'ngx-toastr';
-import { NewLogin } from 'src/app/models/new-login';
+import { NewUser } from 'src/app/models/new-user';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 import { VariableService } from 'src/app/services/variable.service';
 import { NavController } from '@ionic/angular';
+import { Login } from 'src/app/models/login';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { NavController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  user?: NewLogin;
+  user?: Login;
   nameUser: string="";
   password: string="";
 
@@ -35,22 +36,28 @@ export class LoginPage implements OnInit {
   
   onLogin():void{
 
-    this.user = new NewLogin(this.nameUser, this.password);
+    this.user = new Login(this.nameUser, this.password);
     this.auth_service.login(this.user).subscribe(
       data => {
         if(!data.token)
         {
           this.toast(data.message)
         }else {
-          this.variableservice.filter('click');
-          this.navCtrl.pop();
+         // this.variableservice.filter('click');
+         // this.navCtrl.pop();
           this.token_service.setToken(data.token)
-          this.router.navigate(['/home'])
-          this.variableservice.filter('click');
+          // this.router.navigate(['/home'])
+          // this.variableservice.filter('click');
+          this.router.navigateByUrl('/login', {skipLocationChange: true}).then(()=>
+          this.router.navigate(['/home']));
 
         }
       }
     )
+}
+register(){
+  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+  this.router.navigate(['/register']));
 }
 
 async toast(message:string)

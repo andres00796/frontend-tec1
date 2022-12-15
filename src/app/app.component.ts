@@ -14,6 +14,8 @@ export class AppComponent {
   
   my_id:string=localStorage['id_user'];
   islogin:boolean=this.token_service.isLogged();
+  permissionAdmin:string=localStorage['rolUser']
+ 
   constructor(
     private token_service:TokenService,
     private router:Router,
@@ -36,14 +38,29 @@ export class AppComponent {
     
     this.token_service.logOut();
     this.menu.close();
+    //this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    // this.router.navigate(['login']));
+    // this.variableservice.filter('click');
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['login']));
-    this.variableservice.filter('click');
+    this.router.navigate(['/home']));
+    
     
   }
   logIn(){
     this.menu.close();
     this.router.navigate(['login']);
+  }
+  carrito(){
+    this.menuClose();
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/cart']));
+  }
+
+  sendReport(){
+    this.menu.close();
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/report']));
+
   }
 
 }

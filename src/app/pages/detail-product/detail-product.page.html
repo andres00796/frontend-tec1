@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title >Producto {{id}}</ion-title>
+    <ion-title >Producto {{role}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -10,23 +10,23 @@
 <ion-content>
 
 
-  <ion-card fullscreen>
-    <ion-slides pager="true" (ionSlideDidChange)="slideChange($event)">
+  <ion-card fullscreen *ngIf="product">
+    <ion-slides pager="true" (ionSlideDidChange)="slideChange()">
       <ion-slide *ngFor="let src of listSrcImages">
         <img src="{{src}}" side="center" />
       </ion-slide>
     </ion-slides>
     <ion-card-header>
-      <ion-button size="large">
+      <ion-button size="large" (click)="addCart(product.idProduct)">
         <label>Agregar a carrito</label>
         <ion-icon name="cart"></ion-icon>
       </ion-button>
-      <ion-card-title>Nombre</ion-card-title>
+      <ion-card-title>Nombre: {{product.nameProduct}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <h2>Precio:$</h2>
-      <h2>Estado:</h2>
-      <h2>Disponibilidad:  </h2>
+      <h2>Precio: {{product.price}}$</h2>
+      <h2>Cantidad: {{product.stock}}</h2>
+      
     </ion-card-content>
   </ion-card>
   <div class="acciones">
@@ -34,11 +34,11 @@
       <ion-icon name="share-outline"></ion-icon>
     </ion-button>
 
-    <ion-button size="large" *ngIf="permission" slot="start" >
+    <ion-button size="large" *ngIf="permission" slot="start" (click)="updateProduct()">
       <ion-icon name="create-outline"></ion-icon>
     </ion-button>
 
-    <ion-button size="large">
+    <ion-button size="large" >
       <ion-icon name="add-outline"></ion-icon>
     </ion-button>
     <ion-button size="large" *ngIf="permission" slot="end">

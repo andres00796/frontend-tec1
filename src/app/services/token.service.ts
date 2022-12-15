@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,7 @@ export class TokenService {
      const values_json= JSON.parse(values);
      const name_user = values_json.name;
      localStorage['id_user']=values_json.id;
+     localStorage['rolUser']=values_json.rol
      return name_user;
    }
 
@@ -53,9 +55,14 @@ export class TokenService {
       }
       return true;
    }
-
+productCart:Product[]=[]
    logOut():void{
+    let id = localStorage['id_user']
+    let cart = localStorage.getItem("cart-"+id)
+    this.productCart = JSON.parse(cart);
      localStorage.clear();
+     let carritoJSON = JSON.stringify(this.productCart);
+      localStorage.setItem("cart-"+id, carritoJSON);
    }
 
 }

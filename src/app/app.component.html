@@ -13,13 +13,25 @@
         </ion-item>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content *ngIf="!islogin">
       <ion-list>
         <ion-item (click)="menuClose()" [routerLink]="['/home']">Inicio</ion-item>
-        <ion-item *ngIf="islogin" (click)="menuClose()" [routerLink]="['/detail-user',my_id]">Perfil</ion-item>
-        <ion-item *ngIf="islogin" (click)="menuClose()" [routerLink]="['/list-user/']">Usuarios</ion-item>
-        <ion-item *ngIf="islogin" (click)="menuClose()" [routerLink]="['/list-contact/']">Lista de pruductos</ion-item>
+        <ion-item *ngIf="islogin" (click)="menuClose()" [routerLink]="['/list-product/']">Lista de pruductos</ion-item>
+        
         <ion-item *ngIf="!islogin" side="bottom" (click)="logIn()" routerLink>Iniciar Sesion</ion-item>
+      </ion-list>
+    </ion-content> 
+    <ion-content>
+      <ion-list *ngIf="islogin">
+        <ion-item (click)="menuClose()" [routerLink]="['/home']">Inicio</ion-item>
+        <ion-item  (click)="menuClose()" [routerLink]="['/detail-user',my_id]">Perfil</ion-item>
+        <ion-item *ngIf="permissionAdmin=='admin'" (click)="menuClose()" [routerLink]="['/list-user/']">Usuarios</ion-item>
+        <ion-item  (click)="menuClose()" [routerLink]="['/list-product/']">Lista de productos</ion-item>
+        <ion-item *ngIf="permissionAdmin=='admin'" (click)="menuClose()" [routerLink]="['/register-product/']">Agregar nuevo producto</ion-item>
+        <ion-item *ngIf="permissionAdmin!='admin'" side="bottom" (click)="carrito()" routerLink>Carrito</ion-item>
+        <ion-item *ngIf="permissionAdmin=='admin'" side="bottom" (click)="sendReport()" routerLink> Ver reclamo</ion-item>
+        
+        <ion-item *ngIf="permissionAdmin!='admin'" side="bottom" (click)="sendReport()" routerLink>Enviar reclamo</ion-item>
         <ion-item *ngIf="islogin" side="bottom" (click)="logOut()" routerLink>Cerrar Sesion</ion-item>
       </ion-list>
     </ion-content> 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { NewUser } from '../models/new-user';
 import { User } from '../models/user';
 
 @Injectable({
@@ -24,7 +25,7 @@ export class UserService {
     return this.httpClient.get<User>(`${this.userURL}${id_user}`);
   }
 
-  public save(user: User): Observable<any> {
+  public save(user: NewUser): Observable<any> {
     return this.httpClient.post<any>(`${this.userURL}`, user);
   }
 
