@@ -14,21 +14,20 @@ import { TakePhotoComponent } from './take-photo/take-photo.component';
 
       TakePhotoComponent,
       EditPhotoComponent,
- 
+
     ],
     imports: [
       CommonModule,
       IonicModule,
       WebcamModule,
-      ImageCropperModule,    
+      ImageCropperModule,
       ZXingScannerModule,
       FormsModule,
     ],
     exports:[
       TakePhotoComponent,
       EditPhotoComponent,
-      
+
     ]
   })
   export class ComponentsModule { }
-  
