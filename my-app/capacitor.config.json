@@ -1,0 +1,11 @@
+{
+  "appId": "com.example.app",
+  "appName": "tec1",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

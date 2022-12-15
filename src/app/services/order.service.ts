@@ -9,7 +9,7 @@ import { Reserve } from '../models/reserve';
 })
 export class OrderService {
 
-  productURL = 'http://localhost:3030/order/';
+  productURL = 'http://34.230.58.91:3030/order/';
   constructor(
     private httpClient: HttpClient
   ) { }

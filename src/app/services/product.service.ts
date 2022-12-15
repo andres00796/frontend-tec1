@@ -11,7 +11,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  productURL = 'http://localhost:3030/product/';
+  productURL = 'http://34.230.58.91:3030/product/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -42,7 +42,7 @@ export class ProductService {
   public searchProduct(product:Product):Observable<Product[]>{
     return this.httpClient.get<Product[]>(`${this.productURL}${product}`);
   }
-  baseURL = 'http://localhost:3030/file'
+  baseURL = 'http://34.230.58.91:3030/file'
   uploadImage(file, idProduct: string) {  
     //let usuario = this.variablesService.getUsuarioActual();  
     // console.log('Se recibio esta imagen:',file);

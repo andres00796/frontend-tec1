@@ -8,7 +8,7 @@ import { Report } from '../models/report';
 })
 export class ReportService {
 
-  productURL = 'http://localhost:3030/report/';
+  productURL = 'http://34.230.58.91:3030/report/';
   constructor(
     private httpClient: HttpClient
   ) { }
